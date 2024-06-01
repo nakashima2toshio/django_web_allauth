@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'todo_task',
     'debug_toolbar',
 ]
 
@@ -67,7 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # `allauth` needs this from django
+
                 'django.template.context_processors.request',
             ],
         },
@@ -144,9 +144,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# AUTH_USER_MODEL = 'accounts.CustomUser'
+# AUTH_USER_MODEL = 'accounts.CustomUser'   # auth_userをオーバーライドして、CustomUserを作成する。
 
 # Allauth設定
 # LOGIN_REDIRECT_URL = '/accounts/login/'

@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 
+# 追加、独自項目に関する加工処理などはここに書く
 class CustomUserManager(UserManager):
     use_in_migrations = True
 
