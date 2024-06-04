@@ -21,15 +21,15 @@
                 <a class="nav-link" href="{% url 'todo_task:task_list' %}">Todoリスト</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'todo_task:about' %}">アバウト</a>
+                <a class="nav-link" href="{% url 'todo_task:about' %}">About</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="#">ログアウト</a>
+                <a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url 'account_login' %}">ログイン</a>
             </li>
             {% endif %}
         </ul>

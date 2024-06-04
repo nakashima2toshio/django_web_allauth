@@ -2,10 +2,16 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     ＜this is home.＞
+    {% if user.is_authenticated %}
+        <p>ログインユーザー: {{ user.username }}</p>
+    {% else %}
+        <p>ログインしていません。</p>
+    {% endif %}
      <p>
         ・ログイン <a href="http://127.0.0.1:8000/accounts/login/">http://127.0.0.1:8000/accounts/login/</a><br>
         ・登録 <a href="http://127.0.0.1:8000/accounts/signup/">http://127.0.0.1:8000/accounts/signup/</a><br>
-        ・ログアウト <a href="http://127.0.0.1:8000/accounts/logout/">http://127.0.0.1:8000/accounts/logout/</a><br>
+        ・ログアウト <a href="http://127.0.0.1:8000/accounts/logout/">http://127.0.0.1:8000/accounts/logout/</a><br><br>
+         ・todo_taskリスト　<a href="http://127.0.0.1:8000/todo_task/tasks/">href="http://127.0.0.1:8000/todo_task/tasks/</a>><br>
     </p>
 {% endblock %}
 

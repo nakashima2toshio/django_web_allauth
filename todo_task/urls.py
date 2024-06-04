@@ -1,8 +1,9 @@
-from django.urls import path
-
+# todo_tasks/
+# from django.urls import path
 # from todo_task import api_views
 # from todo_task.views import CustomLoginView
 # from todo_task.views import CustomLogoutView
+from django.urls import path
 from todo_task.views import TaskAboutView
 from todo_task.views import TaskListView, TaskCreateView, TaskDetailView, TaskUpdateView, TaskDeleteView
 
