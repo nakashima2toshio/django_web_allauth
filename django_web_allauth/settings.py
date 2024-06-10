@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ksw06fhq)p9#3-lcqvipg91kt5)4+-q(1*4unsn6tz8=o*j@2v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # True
 ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
 
 # Application definition
@@ -83,6 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'TEST': {
+        'NAME': BASE_DIR / 'test_db.sqlite3',
     }
 }
 # # PostgreSQL
@@ -248,3 +251,14 @@ LOGGING = {
     },
 }
 
+#
+# DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+    'IS_RUNNING_TESTS': True,
+}
+
+if not DEBUG or DEBUG_TOOLBAR_CONFIG.get('IS_RUNNING_TESTS'):
+    INSTALLED_APPS = [app for app in INSTALLED_APPS if app != 'debug_toolbar']
+    MIDDLEWARE = [middleware for middleware in MIDDLEWARE if middleware != 'debug_toolbar.middleware.DebugToolbarMiddleware']

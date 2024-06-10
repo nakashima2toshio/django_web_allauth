@@ -11,7 +11,7 @@ app_name = 'todo_task'
 
 urlpatterns = [
     path('tasks/', TaskListView.as_view(), name='task_list'),
-    path('tasks/about', TaskAboutView.as_view(), name='about'),
+    path('tasks/about/', TaskAboutView.as_view(), name='task_about'),
     path('tasks/create/', TaskCreateView.as_view(), name='task_create'),
     path('tasks/<int:pk>/', TaskDetailView.as_view(), name='task_detail'),
     path('tasks/<int:pk>/update/', TaskUpdateView.as_view(), name='task_update'),

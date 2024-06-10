@@ -1,4 +1,4 @@
-#
+# accounts/models.py
 from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
 from django.contrib.auth.models import Group, Permission
