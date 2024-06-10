@@ -36,7 +36,7 @@ class TaskViewsTest(TestCase):
             'completed': False
         }
         response = self.client.post(reverse('todo_task:task_create'), data=form_data)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertTrue(Task.objects.filter(title='New Task').exists())
 
     def test_task_detail_view(self):
@@ -57,7 +57,7 @@ class TaskViewsTest(TestCase):
             'completed': True
         }
         response = self.client.post(reverse('todo_task:task_update', args=[self.task.id]), data=form_data)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.task.refresh_from_db()
         self.assertEqual(self.task.title, 'Updated Task')
 

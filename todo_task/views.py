@@ -1,6 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, FormView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from todo_task.models import Task
 from todo_task.forms import TaskForm
 # from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,7 +25,7 @@ from todo_task.forms import TaskForm
 #         return reverse_lazy('todo_task:login')
 
 
-class TaskListView(ListView):  # LoginRequiredMixin,
+class TaskListView(LoginRequiredMixin, ListView):  # LoginRequiredMixin,
     model = Task
     template_name = 'todo_task/task_list.html'
     context_object_name = 'tasks'
