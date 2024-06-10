@@ -38,7 +38,7 @@ class TestCustomUser(TestCase):
         login = self.client.login(email='user@email.com', password='testpassword123')
         logger.info('accounts/models.py -- login ----')
         self.assertTrue(login)
-        response = self.client.get(reverse('profile'))
+        response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
 
     def test_logout(self):
