@@ -1,11 +1,11 @@
 # accounts/urls.py
 from django.urls import path
-from . import views
+from .views import SignupView, login_view, profile_view, logout_view
 
-app_name = 'accounts'
-urlpatterns = [
-    path('signup/', views.SignupView.as_view(), name='signup'),
-    path('login/', views.LoginView, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('profile/', views.profile_view, name='profile'),
-]
+# app_name = 'accounts'
+# urlpatterns = [
+#     path('signup/', SignupView.as_view(), name='signup'),
+#     path('login/', login_view, name='login'),
+#     path('profile/', profile_view, name='profile'),
+#     path('logout/', logout_view, name='logout'),
+# ]
