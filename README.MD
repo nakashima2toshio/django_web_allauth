@@ -1,3 +1,7 @@
+### V1.00
+- V1では、allauthパッケージをオーバーライドせずに、そのまま使っています。（初めの理解のため）
+- （次の）V1.1でallauthパッケージをオーバーライドする予定です。（オーバーライドの見本へ）
+
 ### django_web_authの基本機能
 - ユーザー認証 (User Authentication)
 - Webアプリ： todo_task(画面:Bootstrap, タスクのCRUD機能)
