@@ -24,7 +24,6 @@
 - https://docs.allauth.org/en/latest/
 
 #### インストール手順
-
 - pip install django-allauth
 - pip freeze >requirements.txt
 -
@@ -39,5 +38,3 @@
 - サインアップ画面
 - パスワード変更画面
 - パスワードリセット画面
-
-- 
