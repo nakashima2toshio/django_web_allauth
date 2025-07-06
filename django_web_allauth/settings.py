@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ksw06fhq)p9#3-lcqvipg91kt5)4+-q(1*4unsn6tz8=o*j@2v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # True
+DEBUG = True
 ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
 
 # Application definition
@@ -148,17 +148,11 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# AUTH_USER_MODEL = 'accounts.CustomUser'   # auth_userをオーバーライドして、CustomUserを作成する。
 
-# Allauth設定
-# LOGIN_REDIRECT_URL = '/accounts/login/'
-# LOGOUT_REDIRECT_URL = '/'
-# ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/signup/'
-
-# ACCOUNT_LOGIN_ATTEMPTS_LIMIT と
-# ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT を削除し、
-# 代わりに ACCOUNT_RATE_LIMITS を使用
-
+# 以下非推奨
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
 # sitesフレームワーク用のサイトID
 SITE_ID = 1
 
@@ -166,18 +160,19 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
-# 認証方式を「メルアドとパスワード」に設定
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# ユーザ名は使用しない
-ACCOUNT_USERNAME_REQUIRED = False
+# 新しい設定形式（django-allauth 65.9.0対応）
+ACCOUNT_LOGIN_METHODS = ['email']  # メールアドレスでのログインを有効化
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']  # サインアップ時の必須フィールド
 
 # ユーザ登録時に確認メールを送信するか(none=送信しない, mandatory=送信する)
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_REQUIRED = True       # ユーザ登録にメルアド必須にする
+
+# レート制限設定
 ACCOUNT_RATE_LIMITS = {
     'login_failed': '5/5m',         # 5回のログイン失敗を5分間で制限
     'signup': '20/h',               # 1時間で20回のサインアップを制限
 }
+
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
